@@ -7,6 +7,8 @@
 #include "spell.h"
 #include "StringTools.h"
 
+//! Basically what backticks do in a shell
+//! Runs a command and returns stdout
 std::string Eval(const std::string& cmd) {
   FILE *p;
   char ch;
@@ -30,6 +32,7 @@ std::string Eval(const std::string& cmd) {
   return out;
 }
 
+//! I don't have to explain what this is, do I?
 static const std::vector<std::string> daynths = {
   "first",
   "second",
@@ -68,7 +71,7 @@ int main() {
   const std::string weekday = Eval("date +'\%A'");
   const std::string month = Eval("date +'\%B'");
   const std::string year = spell(std::stoi(Eval("date +'\%Y'")));
-  const std::string day = daynths[std::stoi(Eval("date +'\%d'"))];
+  const std::string day = daynths[std::stoi(Eval("date +'\%d'")) - 1];
   const std::string hour = spell(std::stoi(Eval("date +'\%H'")));
   const std::string minute = spell(std::stoi(Eval("date +'\%M'")));
   const std::string seconds = spell(std::stoi(Eval("date +'\%S'")));

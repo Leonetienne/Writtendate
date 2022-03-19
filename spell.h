@@ -1,3 +1,7 @@
+/*
+  This code belongs to https://rosettacode.org/wiki/Number_names
+*/
+
 #include <string>
 #include <iostream>
 using std::string;

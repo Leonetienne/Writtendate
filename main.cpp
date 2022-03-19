@@ -68,13 +68,17 @@ static const std::vector<std::string> daynths = {
 };
 
 int main() {
-  const std::string weekday = Eval("date +'\%A'");
-  const std::string month = Eval("date +'\%B'");
-  const std::string year = spell(std::stoi(Eval("date +'\%Y'")));
-  const std::string day = daynths[std::stoi(Eval("date +'\%d'")) - 1];
-  const std::string hour = spell(std::stoi(Eval("date +'\%H'")));
-  const std::string minute = spell(std::stoi(Eval("date +'\%M'")));
-  const std::string seconds = spell(std::stoi(Eval("date +'\%S'")));
+  std::string weekday = Eval("date +'\%A'");
+  std::string month = Eval("date +'\%B'");
+  std::string year = spell(std::stoi(Eval("date +'\%Y'")));
+  std::string day = daynths[std::stoi(Eval("date +'\%d'")) - 1];
+  std::string hour = spell(std::stoi(Eval("date +'\%H'")));
+  std::string minute = spell(std::stoi(Eval("date +'\%M'")));
+  std::string seconds = spell(std::stoi(Eval("date +'\%S'")));
+
+  // Fix minutes being 0
+  if (minute == "zero")
+    minute = "o' clock";
 
   std::stringstream ss;
   ss << "It is "
